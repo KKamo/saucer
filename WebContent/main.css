@@ -1,0 +1,339 @@
+@CHARSET "UTF-8";
+
+* {
+	@keyframes fade {
+		from { opacity: 0;}
+		to { opacity: 1;}
+	}
+	animation: fade 0.5s;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+table.jtable {
+	border: 0px black solid;
+	border-collapse: collapse;
+	width: 244px
+}
+
+td {
+	border: 0px red solid;
+}
+
+tr.top td {
+	font-size: 20px;
+}
+
+tr.cnt td {
+	font-size: 12px;
+}
+
+tr.btm td {
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+td.left {
+	border-top: 1px black solid;
+}
+
+td.right {
+	border-top: 1px black solid;
+	border-right: 1px black solid;
+}
+
+table.play {
+	border: 1px gray solid;
+	border-collapse: collapse;
+	margin: 25px;
+}
+
+tr.tune td {
+	font-size: 15px;
+	padding: 7px 7px 7px 20px;
+	border: 1px black dotted;
+}
+
+td.td_btn {
+	background-image: url("/saucer/res/btn.png");
+	background-position-x: 2px;
+	background-position-y: 7px;
+	background-repeat: no-repeat;
+}
+
+img.rate {
+	margin-top: 4px;
+	vertical-align: middle;
+}
+
+div.imgs {
+	float: left;
+	padding-right: 5px;
+}
+
+clear {
+	clear: both;
+}
+
+#jubility {
+	width: 244px;
+	float: left;
+	padding-right: 56px;
+}
+
+#player {
+	width: 500px;
+	float: left;
+}
+
+#refresh {
+	background-image: url("/saucer/res/refresh.gif");
+	background-repeat: no-repeat;
+	border: 1px solid black;
+	position: relative;
+	left: 25px;
+	top: 180px;
+	width: 209px;
+	height: 55px;
+	font-size: 28px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#toeagate {
+	background-image: url("/saucer/res/eagate.gif");
+	background-repeat: no-repeat;
+	border: 1px solid black;
+	position: relative;
+	left: 250px;
+	top: 123px;
+	width: 209px;
+	height: 55px;
+	font-size: 28px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#title_head {
+	width: 740px;
+	padding: 10px 10px 10px 50px;
+}
+
+#all {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0px black solid;
+}
+
+#head {
+	margin: 0px auto;
+}
+
+#underLine {
+	border-bottom: 1px gray dashed;
+	padding: 10px 0px 10px 0px;
+}
+
+#tuneinfo {
+	float: left;
+}
+
+#setting {
+	float: left;
+	margin: 25px;
+}
+
+#marker {
+	width: 106px;
+	float: left;
+}
+
+#bg {
+	width: 70px;
+	float: left;
+}
+
+#data {
+	width: 800px;
+	border: 0px red solid;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#clear {
+	clear: both;
+}
+
+#statistic_data {
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+#statits {
+	margin: 0 auto;
+}
+
+table.stat {
+	margin: 0 auto;
+	width:647px;
+}
+
+table.stat tr {
+	height: 20px;
+}
+
+table.stat tr.line {
+	height:2px;
+}
+
+#hide {
+	position: relative;
+	width: 30px;
+	height: 30px;
+	top: 36px;
+	left: 680px;
+	font-size: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#f0 {
+	display: block;
+	width: 37px;
+	height: 37px;
+	position: relative;
+	margin-top: -25px;
+	margin-bottom: -10px;
+	margin-left: 102px;
+	vertical-align: middle;
+}
+
+#f1 {
+	background-image: url("/saucer/res/rate/fc.png");
+	background-position-x: initial;
+	background-position-y: initial;
+	background-size: initial;
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+	background-attachment: initial;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: initial;
+	display: block;
+	width: 37px;
+	height: 37px;
+	position: relative;
+	margin-top: -25px;
+	margin-bottom: -10px;
+	margin-left: 102px;
+	vertical-align: middle;
+}
+
+td.bscl {
+	padding: 0px;
+	margin: 0px;
+	width: 21px;
+	background-image: url("/saucer/res/level/bg_bsc.png");
+	color: #369a36;
+	font-size: 30px;
+}
+
+td.advl {
+	padding: 0px;
+	margin: 0px;
+	width: 21px;
+	background-image: url("/saucer/res/bg/bg_adv.png");
+	color: #fc9c19;
+	font-size: 30px;
+}
+
+td.extl {
+	padding: 0px;
+	margin: 0px;
+	width: 21px;
+	background-image: url("/saucer/res/bg/bg_ext.png");
+	color: #fc3a3a;
+	font-size: 30px;
+}
+
+table.music_data {
+	width: 800px;
+	border: 1px black solid;
+	border-spacing: 0px;
+}
+
+tbody {
+	padding: 0px;
+	margin: 0px;
+}
+
+table#music_data tr {
+	height: 50px;
+	border: 1px dotted gray;
+}
+
+tr.data_head th {
+	border: 1px red dashed;
+	height: 30px;
+}
+
+
+th, td {
+	display: table-cell;
+}
+
+tr.odd td, th {
+	font-size: 15px;
+	background-color: #FFFFFF;
+	text-align: center;
+	border: 1px dotted gray;
+	margin: 0px;
+	padding: 0px;
+}
+
+tr.even td, th {
+	font-size: 15px;
+	background-color: #E8E8E8;
+	text-align: center;
+	border: 1px dotted gray;
+	margin: 0px;
+	padding: 0px;
+}
+
+img.cover {
+	width: 49px;
+	height: 49px;
+}
+
+td.jacket {
+	width: 50px;
+	margin: 0px;
+	padding: 0px;
+}
+
+td.name {
+	padding: 10px;
+	width: 269px;
+	border-left: 0px;
+	text-align: left;
+}
+
+th.title {
+	width: 316px;
+}
+
+th.score {
+	width: 161px;
+}
+
+.bg_gra { /* IE */
+	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#000000', EndColorStr='#ffffff', GradientType=1 );
+	/*Saf4+, Chrome */
+	background-image: -webkit-gradient(linear, 0%, 100%, 0%, 100%, from(#000), to(#FFF) );
+	/* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -webkit-linear-gradient(left, #000, #fff);
+}
