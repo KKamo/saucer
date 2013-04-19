@@ -59,5 +59,20 @@ public class MusicData {
 		primary key(uid, mid)
 	);
 	
+	기록 갱신 테이블
+	create table newRecord (
+		uid varchar(20),
+		mid varchar(8),
+		nbsc varchar(8) default '0',
+		nadv varchar(8) default '0',
+		next varchar(8) default '0',
+		foreign key(uid) references user(uid)
+		on delete cascade
+		on update cascade,
+		foreign key(mid) references score(mid)
+		on delete cascade
+		on update cascade,
+		primary key(uid, mid)
+	);
 	/* */
 }

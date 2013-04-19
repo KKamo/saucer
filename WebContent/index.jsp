@@ -100,6 +100,26 @@
 		return score_data;
 	}
 	
+	public String addComma(int score) {
+		String scr = Integer.toString(score), ret = "";
+		int i, len = scr.length();
+		for(i=len; i>3; i-=3)
+			ret = "," + scr.substring(i-3, i) + ret;
+		ret = scr.substring(0, i) + ret;
+		
+		return ret;
+	}
+	
+	public String addComma(String score) {
+		String scr = score, ret = "";
+		int i, len = scr.length();
+		for(i=len; i>3; i-=3)
+			ret = "," + scr.substring(i-3, i) + ret;
+		ret = scr.substring(0, i) + ret;
+		
+		return ret;
+	}
+	
 %><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -124,15 +144,20 @@
 	}
 	
 	function toggle(e) {
-		if(e.style.display == "none") {	e.style.display = ""; }
-		else {	e.style.display = "none";	}
+		if(e.style.display == "none") {
+			e.style.display = "";
+			document.getElementById("hide").innerHTML = "▲";
+			}
+		else {
+			e.style.display = "none";
+			document.getElementById("hide").innerHTML = "▼";
+		}
 	}
 </script>
 </head>
 <body><%
 	Parse parse = new Parse("http://p.eagate.573.jp/game/jubeat/saucer/p/playdata/index.html");
-	Player p = parse.getPlayer();
-%>
+	Player p = parse.getPlayer();%>
 <div id=all>
 	<div id=head>
 		<div id=title_head class=bg_gra>
@@ -199,11 +224,11 @@
 			<div id=statits>
 				<table class=stat><tbody>
 					<tr class=odd>
-						<th>bsc</th><td><%=sum[10][0]%></td><td><%=sum[10][1]%></td><td><%=sum[10][0]/sum[10][1]%></td>
+						<th>bsc</th><td><%=addComma(sum[10][0])%></td><td><%=sum[10][1]%></td><td><%=addComma(sum[10][0]/sum[10][1])%></td>
 					</tr><tr class=even>
-						<th>adv</th><td><%=sum[11][0]%></td><td><%=sum[11][1]%></td><td><%=sum[11][0]/sum[11][1]%></td>
+						<th>adv</th><td><%=addComma(sum[11][0])%></td><td><%=sum[11][1]%></td><td><%=addComma(sum[11][0]/sum[11][1])%></td>
 					</tr><tr class=odd>
-						<th>ext</th><td><%=sum[12][0]%></td><td><%=sum[12][1]%></td><td><%=sum[12][0]/sum[12][1]%></td>
+						<th>ext</th><td><%=addComma(sum[12][0])%></td><td><%=sum[12][1]%></td><td><%=addComma(sum[12][0]/sum[12][1])%></td>
 					</tr><tr class=line>
 					<th class=score></th><th class=score></th><th class=score></th><th class=score></th>
 					<%
@@ -219,9 +244,9 @@
 								avr = sum[i][0] / sum[i][1];
 							
 							out.print("						<th>" + (i+1) + "</th>");
-							out.print("<td>" + sum[i][0] + "</td>");
+							out.print("<td>" + addComma(sum[i][0]) + "</td>");
 							out.print("<td>" + sum[i][1] + "</td>");
-							out.println("<td>" + avr + "</td>");
+							out.println("<td>" + addComma(avr) + "</td>");
 						}
 					%>
 					</tr><tr class=line>
@@ -235,7 +260,7 @@
 						int totalSum = sum[10][0]+sum[11][0]+sum[12][0];
 						int totalCnt = sum[10][1]+sum[11][1]+sum[12][1];
 					%>
-						<th>TOTAL</th><td><%=totalSum%></td><td><%=totalCnt%></td><td><%=totalSum/totalCnt%></td>
+						<th>TOTAL</th><td><%=addComma(totalSum)%></td><td><%=totalCnt%></td><td><%=addComma(totalSum/totalCnt)%></td>
 					</tr>
 				</tbody></table>
 			</div>
@@ -264,21 +289,21 @@
 					out.println("			<td class=jacket><img class=cover src=/saucer/res/jacket/" + md.info + ".gif></td>");
 					out.println("			<td class=name style='text-align: left;'>" + md.name + "</td>");
 					
-					out.print("			<td class=bscl>" + md.bscl + "</td><td>" + md.bsc);
+					out.print("			<td class=bscl>" + md.bscl + "</td><td>" + addComma(md.bsc));
 					if(md.bscf == 1)
 						out.print("<div id=f1>");
 					else
 						out.print("<div id=f0>");
 					out.println(rating(md.bsc) + "</div></td>");
 					
-					out.print("			<td class=advl>" + md.advl + "</td><td>" + md.adv);
+					out.print("			<td class=advl>" + md.advl + "</td><td>" + addComma(md.adv));
 					if(md.advf == 1)
 						out.print("<div id=f1>");
 					else
 						out.print("<div id=f0>");
 					out.println(rating(md.adv) + "</div></td>");
 					
-					out.print("			<td class=extl>" + md.extl + "</td><td>" + md.ext);
+					out.print("			<td class=extl>" + md.extl + "</td><td>" + addComma(md.ext));
 					if(md.extf == 1)
 						out.print("<div id=f1>"); 
 					else

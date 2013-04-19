@@ -216,14 +216,14 @@ public class DBAdapter {
 		Connection c = this.connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement(
-				"select info from jubeat");
+				"select mid from musicinfo");
 		
 		ResultSet rs = ps.executeQuery();
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
 		while(rs.next())
-			list.add(rs.getString("info"));
+			list.add(rs.getString("mid"));
 		
 		return list;
 	}
@@ -356,4 +356,6 @@ public class DBAdapter {
 		
 		return list;
 	}
+	
+	
 }
