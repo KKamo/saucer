@@ -75,8 +75,9 @@ public class Parse {
 		Player player = playerParsing(doc);
 		
 		try {
-			dba.deleteUser(player.uid);
-			dba.addUser(player);
+			dba.insertAndUpdateUser(player);
+		//	dba.deleteUser(player.uid);
+		//	dba.addUser(player);
 		} catch (ClassNotFoundException e) { e.printStackTrace();
 		} catch (SQLException e) { e.printStackTrace(); }
 

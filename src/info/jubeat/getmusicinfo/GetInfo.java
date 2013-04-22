@@ -77,51 +77,6 @@ public class GetInfo {
 		}
 		System.out.println("total " + count + " update complete.");
 		System.out.println("musicinfo parsing complete.");
-		
-		/* *
-		GetNumber info = new GetNumber();
-		ArrayList<String> list = info.getInfo();
-		Iterator<String> it = list.iterator();
-		int count = 0;
-		BufferedImage image = null;
-		String host = "http://p.eagate.573.jp/game/jubeat/saucer/p/images/img.html?img_key=jacket";
-		String minfo = "http://p.eagate.573.jp/game/jubeat/saucer/p/playdata/music_detail.html?mid=";
-		ArrayList<MusicData> mdList = new ArrayList<MusicData>();
-		
-		HtmlDown html = new HtmlDown();
-		html = html.login();
-		
-		try {
-			while(it.hasNext()) {
-				String num = (String) it.next();
-				String jacketUrl = host + num;
-				String levelUrl = minfo + num;
-				count++;
-				image = ImageIO.read(new URL(jacketUrl));
-				downImage(image, num);	// for exception.
-				html.setUrl(levelUrl);
-				String mhtml= html.getData();
-				
-				/* get level *
-				GetLevel level = new GetLevel(mhtml);
-				
-				MusicData md = new MusicData();
-				md.info = num;
-				md.bscl = level.getBscLevel();
-				md.advl = level.getAdvLevel();
-				md.extl = level.getExtLevel();
-				md.name = level.getName();
-				
-				mdList.add(md);
-				/* *
-			}
-			
-			info.insertLevels(mdList);
-			System.out.println("total " + count + " update complete.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		/* */
 	}
 	
 	public static void downImage(BufferedImage img, String num) {
@@ -132,5 +87,4 @@ public class GetInfo {
 			System.out.println("삭제곡입니다. : " + num);
 		}
 	}
-	
 }

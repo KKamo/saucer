@@ -120,6 +120,13 @@
 		return ret;
 	}
 	
+	public int getAverage(int sum, int count) {
+		if(count == 0)
+			return 0;
+		else
+			return sum/count;
+	}
+	
 %><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -224,11 +231,11 @@
 			<div id=statits>
 				<table class=stat><tbody>
 					<tr class=odd>
-						<th>bsc</th><td><%=addComma(sum[10][0])%></td><td><%=sum[10][1]%></td><td><%=addComma(sum[10][0]/sum[10][1])%></td>
+						<th>bsc</th><td><%=addComma(sum[10][0])%></td><td><%=sum[10][1]%></td><td><%=getAverage(sum[10][0],sum[10][1])%></td>
 					</tr><tr class=even>
-						<th>adv</th><td><%=addComma(sum[11][0])%></td><td><%=sum[11][1]%></td><td><%=addComma(sum[11][0]/sum[11][1])%></td>
+						<th>adv</th><td><%=addComma(sum[11][0])%></td><td><%=sum[11][1]%></td><td><%=getAverage(sum[11][0],sum[11][1])%></td>
 					</tr><tr class=odd>
-						<th>ext</th><td><%=addComma(sum[12][0])%></td><td><%=sum[12][1]%></td><td><%=addComma(sum[12][0]/sum[12][1])%></td>
+						<th>ext</th><td><%=addComma(sum[12][0])%></td><td><%=sum[12][1]%></td><td><%=getAverage(sum[12][0],sum[12][1])%></td>
 					</tr><tr class=line>
 					<th class=score></th><th class=score></th><th class=score></th><th class=score></th>
 					<%
@@ -246,7 +253,7 @@
 							out.print("						<th>" + (i+1) + "</th>");
 							out.print("<td>" + addComma(sum[i][0]) + "</td>");
 							out.print("<td>" + sum[i][1] + "</td>");
-							out.println("<td>" + addComma(avr) + "</td>");
+							out.println("<td>" + getAverage(sum[i][0],sum[i][1]) + "</td>");
 						}
 					%>
 					</tr><tr class=line>
@@ -260,7 +267,7 @@
 						int totalSum = sum[10][0]+sum[11][0]+sum[12][0];
 						int totalCnt = sum[10][1]+sum[11][1]+sum[12][1];
 					%>
-						<th>TOTAL</th><td><%=addComma(totalSum)%></td><td><%=totalCnt%></td><td><%=addComma(totalSum/totalCnt)%></td>
+						<th>TOTAL</th><td><%=addComma(totalSum)%></td><td><%=totalCnt%></td><td><%=getAverage(totalSum,totalCnt)%></td>
 					</tr>
 				</tbody></table>
 			</div>

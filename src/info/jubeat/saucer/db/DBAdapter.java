@@ -14,7 +14,7 @@ public class DBAdapter {
 	public DBAdapter(ConnectionMaker c) {
 		this.connectionMaker = c;
 	}
-	
+	// Parse.java
 	public Player getUser() throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
 		PreparedStatement ps = c.prepareStatement(
@@ -45,7 +45,7 @@ public class DBAdapter {
 		
 		return p;
 	}
-	
+	// Parse.java : ¾È¾¸
 	public void addUser(Player p) throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
 		
@@ -75,33 +75,6 @@ public class DBAdapter {
 		c.close();
 	}
 	
-	public boolean isExestUser(String fid) throws ClassNotFoundException, SQLException {
-		Connection c = connectionMaker.makeConnection();
-		
-		PreparedStatement ps = c.prepareStatement(
-				"select fid from user where fid = ?");
-		ps.setString(1, fid);
-		boolean res = ps.execute();
-		
-		ps.close();
-		c.close();
-		
-		return res;
-	}
-	
-	public void deleteUser(String fid) throws ClassNotFoundException, SQLException {
-		Connection c = this.connectionMaker.makeConnection();
-		
-		PreparedStatement ps = c.prepareStatement(
-				"delete from user where uid = ?");
-		ps.setString(1, fid);
-		
-		ps.executeUpdate();
-		
-		ps.close();
-		c.close();
-	}
-	
 	public void update(MusicData md) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker.makeConnection();
 		
@@ -123,7 +96,21 @@ public class DBAdapter {
 		ps.close();
 		c.close();
 	}
-	
+
+	public boolean isExestUser(String uid) throws ClassNotFoundException, SQLException {
+		Connection c = connectionMaker.makeConnection();
+		
+		PreparedStatement ps = c.prepareStatement(
+				"select count(*) from user where uid = ?");
+		ps.setString(1, uid);
+		boolean res = ps.execute();
+		
+		ps.close();
+		c.close();
+		
+		return res;
+	}
+
 	public String isExistMusic(String info) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker.makeConnection();
 		
@@ -194,7 +181,7 @@ public class DBAdapter {
 
 		return md;
 	}
-	
+	// Parse.java : ¾È¾¸
 	public ArrayList<MusicData> getAll() throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
 		
@@ -310,6 +297,8 @@ public class DBAdapter {
 				+ "ON DUPLICATE KEY UPDATE bsc = ?, bscf = ?, adv = ?, advf = ?, ext = ?, extf = ?"
 				);
 		
+	//	System.out.println(md.info+" : "+uid);
+		
 		// insert
 		ps.setString(1, md.info);
 		ps.setString(2, uid);
@@ -333,7 +322,7 @@ public class DBAdapter {
 		ps.close();
 		c.close();
 	}
-	
+	//Parse.java
 	public ArrayList<MusicData> getAllMusicData(String uid) throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
 		
@@ -357,5 +346,60 @@ public class DBAdapter {
 		return list;
 	}
 	
+	public void insertAndUpdateUser(Player p) throws ClassNotFoundException, SQLException {
+		Connection c = connectionMaker.makeConnection();
+		PreparedStatement ps = null;
+		
+		if(!isExestUser(p.uid)) {
+			System.out.println("user insert");
+			ps = c.prepareStatement(
+					"INSERT INTO USER(uid, id, title, groups, jimage, jubility, plma, jubilityname, "
+						+ " marker, background, lasttime, lastlocation, playtune, fullcombo, excellent) "
+						+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) "
+						);
+			ps.setString(1, p.uid);
+			ps.setString(2, p.id);
+			ps.setString(3, p.title);
+			ps.setString(4, p.groups);
+			ps.setString(5, p.jimage);
+			ps.setString(6, p.jubility);
+			ps.setString(7, p.plma);
+			ps.setString(8, p.jubilityName);
+			ps.setString(9, p.marker);
+			ps.setString(10, p.background);
+			ps.setString(11, p.lastTime);
+			ps.setString(12, p.lastLocation);
+			ps.setString(13, p.playTunes);
+			ps.setString(14, p.fullCombo);
+			ps.setString(15, p.excellent);
+		} else {
+			System.out.println("user update");
+			ps = c.prepareStatement(" UPDATE USER "
+				+ " SET id=?, title=?, groups=?, jimage=?, jubility=?, plma=?, "
+				+	" jubilityname=?, marker=?, background=?, lasttime=?, lastlocation=?, "
+				+	" playtune=?, fullcombo=?, excellent=? "
+				+ " WHERE uid = ? "
+			);
+			ps.setString(1, p.id);
+			ps.setString(2, p.title);
+			ps.setString(3, p.groups);
+			ps.setString(4, p.jimage);
+			ps.setString(5, p.jubility);
+			ps.setString(6, p.plma);
+			ps.setString(7, p.jubilityName);
+			ps.setString(8, p.marker);
+			ps.setString(9, p.background);
+			ps.setString(10, p.lastTime);
+			ps.setString(11, p.lastLocation);
+			ps.setString(12, p.playTunes);
+			ps.setString(13, p.fullCombo);
+			ps.setString(14, p.excellent);
+			ps.setString(15, p.uid);
+		}
+		ps.executeUpdate();
+		
+		ps.close();
+		c.close();
+	}
 	
 }
